@@ -1,0 +1,367 @@
+/*
+  AYED STEP Intensive 2026 — Premium UI
+  Bootstrap 5.3 RTL + هوية فخمة (متغيرات + ظلال + تدرجات + حركات)
+*/
+
+:root {
+  --radius-lg: 20px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  /* Brand */
+  --color-primary: #F6C445; /* Gold */
+  --color-primary-2: #FFD36D;
+  --color-ink: #111827;
+  --color-ink-2: rgba(17, 24, 39, 0.72);
+
+  /* Surface */
+  --bg: #f7f8fb;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-solid: #ffffff;
+  --surface-2: rgba(255, 255, 255, 0.56);
+  --border: rgba(17, 24, 39, 0.10);
+
+  /* Effects */
+  --shadow-soft: 0 14px 45px rgba(17, 24, 39, 0.12);
+  --shadow-strong: 0 22px 70px rgba(17, 24, 39, 0.18);
+  --blur: 14px;
+
+  /* Gradients */
+  --grad-bg: radial-gradient(1200px circle at 20% 12%, rgba(246, 196, 69, 0.22) 0%, rgba(246, 196, 69, 0.00) 55%),
+             radial-gradient(1200px circle at 80% 0%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.00) 55%),
+             radial-gradient(1000px circle at 80% 88%, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.00) 55%);
+  --grad-hero: linear-gradient(115deg, rgba(11, 15, 20, 0.82), rgba(11, 15, 20, 0.35));
+}
+
+[data-bs-theme="dark"] {
+  --bg: #0b0f14;
+  --surface: rgba(17, 24, 39, 0.60);
+  --surface-solid: #0f172a;
+  --surface-2: rgba(17, 24, 39, 0.42);
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 18px 55px rgba(0, 0, 0, 0.42);
+  --shadow-strong: 0 26px 88px rgba(0, 0, 0, 0.55);
+  --color-ink: #e5e7eb;
+  --color-ink-2: rgba(229, 231, 235, 0.72);
+  --grad-bg: radial-gradient(1200px circle at 20% 12%, rgba(246, 196, 69, 0.18) 0%, rgba(246, 196, 69, 0.00) 60%),
+             radial-gradient(1200px circle at 80% 0%, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0.00) 60%),
+             radial-gradient(1000px circle at 80% 88%, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.00) 60%);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Tajawal", system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
+  background: var(--bg);
+  color: var(--color-ink);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--grad-bg);
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(17,24,39,0.04) 1px, transparent 0);
+  background-size: 18px 18px;
+  opacity: 0.50;
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-bs-theme="dark"] body::after {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  opacity: 0.35;
+}
+
+/* Premium shell */
+.premium-shell {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--surface) !important;
+  backdrop-filter: blur(var(--blur));
+}
+
+.navbar.border-bottom {
+  border-bottom-color: var(--border) !important;
+}
+
+.navbar .nav-link {
+  color: var(--color-ink-2);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--color-ink);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: var(--shadow-strong);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/founding-day-bg.webp') center/cover no-repeat;
+  transform: scale(1.03);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-hero);
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .14;
+  background-image:
+    repeating-linear-gradient(45deg,
+      rgba(255,255,255,.50) 0,
+      rgba(255,255,255,.50) 2px,
+      transparent 2px,
+      transparent 16px);
+  mix-blend-mode: overlay;
+}
+
+.badge-soft {
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* Cards / Sections */
+.card-soft,
+.form-section {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-soft);
+}
+
+.card-soft .card-header {
+  background: transparent;
+}
+
+/* Pricing */
+.price-old {
+  text-decoration: line-through;
+  opacity: .70;
+}
+.price-now {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+/* Countdown digits */
+.timer {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+}
+
+/* Share bar */
+[data-share-bar] {
+  border-radius: var(--radius-lg);
+}
+
+.sharebar-inner {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.share-chip {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--color-ink);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.share-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.12);
+}
+
+.share-ic {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(246,196,69,0.18);
+}
+
+[data-bs-theme="dark"] .share-ic {
+  background: rgba(246,196,69,0.12);
+}
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1030;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* Floating assistant */
+.assistant-fab {
+  position: fixed;
+  bottom: 92px;
+  inset-inline-end: 16px;
+  z-index: 1031;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-strong);
+}
+
+.assistant-panel {
+  position: fixed;
+  bottom: 162px;
+  inset-inline-end: 16px;
+  z-index: 1031;
+  width: min(390px, calc(100vw - 32px));
+  max-height: 62vh;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-strong);
+  overflow: hidden;
+  display: none;
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+}
+
+.assistant-panel.open { display: block; }
+
+.assistant-messages {
+  padding: 12px;
+  overflow: auto;
+  max-height: 44vh;
+  background: var(--surface-solid);
+}
+
+.msg {
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: 16px;
+  margin: 6px 0;
+  max-width: 95%;
+  line-height: 1.70;
+  font-size: .96rem;
+}
+
+.msg.bot {
+  background: rgba(59, 130, 246, .10);
+  border: 1px solid rgba(59, 130, 246, .22);
+}
+
+.msg.user {
+  background: rgba(16, 185, 129, .10);
+  border: 1px solid rgba(16, 185, 129, .22);
+}
+
+.assistant-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* Copy fields */
+.copy-field {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.copy-field code {
+  flex: 1;
+  user-select: all;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--border);
+}
+
+[data-bs-theme="dark"] .copy-field code {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.float {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+/* Typography helpers */
+.lh-wide { line-height: 1.90; }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(var(--blur));
+}
